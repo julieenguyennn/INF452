@@ -1,0 +1,83 @@
+import turtle as tt
+
+# Draw base
+tt.penup()
+tt.goto(-200, -200)
+tt.left(90)
+tt.pendown()
+tt.forward(500)
+## Base 2
+tt.right(90)
+tt.forward(200)
+## Base 3
+tt.right(90)
+tt.forward(100)
+
+# Draw head
+tt.penup()
+tt.right(180)
+tt.goto(30,0)
+tt.pendown()
+tt.circle(30)
+tt.penup()
+
+# Draw body
+tt.goto(0,-30)
+tt.right(180)
+tt.pendown()
+tt.forward(150)
+
+# Draw left hand
+tt.goto(0, -70)
+tt.pendown()
+tt.right(45)
+tt.forward(40)
+tt.penup()
+
+# Draw right hand
+tt.goto(0, -70)
+tt.pendown()
+tt.right(270)
+tt.forward(40)
+tt.penup()
+
+# Draw left leg
+tt.goto(0, -180)
+tt.pendown()
+tt.right(90)
+tt.forward(40)
+tt.penup()
+
+# Draw right leg
+tt.goto(0, -180)
+tt.pendown()
+tt.right(270)
+tt.forward(40)
+tt.penup()
+
+tt.done()
+
+def drawHangman(attempts):
+    draw = [(tt.pendown(), tt.forward(500)), # Base 1
+        (tt.right(90), tt.forward(200)), # Base 2
+        (tt.right(90), tt.forward(100)), # Base 3
+        (tt.penup(), tt.right(180), tt.goto(30,0), tt.pendown(), tt.circle(30), tt.penup()), # Head
+        (tt.goto(0,-30), tt.right(180), tt.pendown(), tt.forward(150)), # Body
+        (tt.goto(0, -70), tt.pendown(), tt.right(45), tt.forward(40), tt.penup()), # Left hand
+        (tt.goto(0, -70), tt.pendown(), tt.right(270), tt.forward(40), tt.penup()), # Right hand
+        (tt.goto(0, -180), tt.pendown(), tt.right(90), tt.forward(40), tt.penup()), # Left leg
+        (tt.goto(0, -180), tt.pendown(), tt.right(270), tt.forward(40), tt.penup())]
+    
+    tt.pensize(5)
+    tt.penup()
+    tt.goto(-200, -200)
+    tt.left(90)
+    for i in draw:
+        draw[i]
+        attempts += 1
+    tt.done()
+    
+    if attempts == len(draw):
+        print("You lose!")
+
+drawHangman(0)
